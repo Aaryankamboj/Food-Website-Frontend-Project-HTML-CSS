@@ -1,0 +1,7 @@
+this is version 1 of my project
+i want this to go into commit
+change by me
+this is changed now
+again changed
+agian changed
+this is from  master

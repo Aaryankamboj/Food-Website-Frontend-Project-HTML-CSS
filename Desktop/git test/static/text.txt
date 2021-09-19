@@ -1,0 +1,3 @@
+abc
+git diff working directory and staging area ko compare karta hai
+git diff --staged compare your previous commit with your staging area
