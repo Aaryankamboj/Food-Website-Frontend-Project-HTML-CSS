@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Event Countdown Timer</title>
+</head>
+<style>
+     body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        
+        h1 {
+            color: #333;
+        }
+        
+        #timer {
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 300px;
+        }
+        
+        #countdown {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e44d26;
+        }
+        
+        #event {
+            font-size: 34px;
+            font-weight: bold;
+            color: #221d1c;
+        }
+</style>
+<body>
+    <h1>Event Countdown Timer</h1>
+    <div id="timer">
+        <h3 id="event">{{data.name}}</h3>
+        <h2>Time Remaining:</h2>
+        <div id="countdown">
+            {{data.hours|stringformat:"02d"}}:{{data.mins|stringformat:"02d"}}:{{data.seconds|stringformat:"02d"}}
+        </div>
+    </div>
+
+    <!-- Javascript -->
+
+    <script>
+        function updateTimer(){
+            let hours = parseInt(document.getElementById('countdown').textContent.split(':')[0])
+            let mins = parseInt(document.getElementById('countdown').textContent.split(':')[1])
+            let seconds = parseInt(document.getElementById('countdown').textContent.split(':')[2])
+        
+            if(seconds>0){
+                seconds--;
+            } else{
+                if(mins>0){
+                    mins--;
+                    seconds=59;
+                } else{
+                    if(hours>0){
+                        hours--;
+                        mins=59;
+                        seconds=59;
+                    } else{
+                        // alert("Event Started Already!!")
+                    }
+                }
+            }
+
+            document.getElementById('countdown').textContent = 
+            (hours < 10 ?'0':'') + hours + ':' +
+            (mins<10 ? '0' : '') + mins + ':' + 
+            (seconds<10 ? '0' :'') + seconds;
+        }
+
+        setInterval(updateTimer, 1000);
+    </script>
+
+    
+</body>
+</html>
